@@ -13,6 +13,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
     <servlet-class>noobspace.ServletRemoveUser</servlet-class>
   </servlet>
   <servlet>
+    <servlet-name>AddFriend</servlet-name>
+    <servlet-class>noobspace.ServletAddFriend</servlet-class>
+  </servlet>
+  <servlet>
     <servlet-name>RegisterUser</servlet-name>
     <servlet-class>noobspace.ServletInscription</servlet-class>
   </servlet>
@@ -40,6 +44,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
     <url-pattern>/connect</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
+    <servlet-name>AddFriend</servlet-name>
+    <url-pattern>/addFriend</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>EditProfil</servlet-name>
     <url-pattern>/EditProfil</url-pattern>
   </servlet-mapping>
@@ -47,6 +55,6 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
   
   
   <welcome-file-list>
-    <welcome-file>UserApplication.jsp</welcome-file>
+    <welcome-file>Connexion.jsp</welcome-file>
   </welcome-file-list>
 </web-app> 

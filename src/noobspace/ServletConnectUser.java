@@ -23,14 +23,14 @@ public class ServletConnectUser extends HttpServlet {
     String password = checkNull(req.getParameter("password"));
 
     HttpSession session = req.getSession();
-    session.setAttribute( "mail", mail);
+    session.setAttribute("mail", mail);
     
     boolean authenticationSuccessful = Dao.INSTANCE.checkUser(mail, password);
     if(!authenticationSuccessful){
     	resp.sendRedirect("/Connexion.jsp");
     }
     else {
-    	resp.sendRedirect("/NoobSpace.html");
+    	resp.sendRedirect("/Mainpage.jsp");
     }
   }
 
