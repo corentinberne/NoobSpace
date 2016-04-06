@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
@@ -20,13 +21,16 @@ public class ServletConnectUser extends HttpServlet {
 
     String mail = checkNull(req.getParameter("email"));
     String password = checkNull(req.getParameter("password"));
+
+    HttpSession session = req.getSession();
+    session.setAttribute( "mail", mail);
     
     boolean authenticationSuccessful = Dao.INSTANCE.checkUser(mail, password);
     if(!authenticationSuccessful){
     	resp.sendRedirect("/Connexion.jsp");
     }
     else {
-    	resp.sendRedirect("/UserPage.jsp");
+    	resp.sendRedirect("/NoobSpace.html");
     }
   }
 
