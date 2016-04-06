@@ -13,31 +13,24 @@ import com.google.appengine.api.users.UserServiceFactory;
 import noobspace.dao.Dao;
 
 @SuppressWarnings("serial")
-public class ServletInscription extends HttpServlet {
+public class ServletEditProfil extends HttpServlet {
     
   public void doPost(HttpServletRequest req, HttpServletResponse resp)throws IOException {
     System.out.println("Creating new noobspace user ");
-    /*User user = (User) req.getAttribute("user");
-    if (user == null) {
-      UserService userService = UserServiceFactory.getUserService();
-      user = userService.getCurrentUser();
-    }*/
 
+    String mail = "";
     String nom = checkNull(req.getParameter("Nom"));
     String prenom = checkNull(req.getParameter("Prenom"));
-    String email = checkNull(req.getParameter("Email"));
-    String password = checkNull(req.getParameter("pass"));
-    String passwordConf = checkNull(req.getParameter("passConf"));
+    String birthDate = checkNull(req.getParameter("birthDate"));
+    String city = checkNull(req.getParameter("city"));
+    String address = checkNull(req.getParameter("address"));
+    String codePostal = checkNull(req.getParameter("postal"));
 
-    System.out.println("yolyoyoyoy");
+    System.out.println("editage profil !!!!!");
     
-    if(!password.equals(passwordConf))
-	 resp.sendRedirect("/Inscription.jsp");
     
-    else{
-        Dao.INSTANCE.add(nom, prenom, email, password);
-        resp.sendRedirect("/EditProfil.jsp");
-    }
+    Dao.INSTANCE.editProfil(mail, nom, prenom, birthDate, city, address, codePostal);
+    resp.sendRedirect("/EditProfil.jsp");
   }
 
   private String checkNull(String s) {
