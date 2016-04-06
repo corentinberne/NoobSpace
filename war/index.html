@@ -1,0 +1,57 @@
+<!doctype html>
+<!-- The DOCTYPE declaration above will set the     -->
+<!-- browser's rendering engine into                -->
+<!-- "Standards Mode". Replacing this declaration   -->
+<!-- with a "Quirks Mode" doctype is not supported. -->
+
+<html>
+<head>
+<link href="css/index.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+	<h1>NoobSpace</h1>
+	<table style="height: 80%">
+		<tr>
+			<td>
+			<h2>Connexion</h2>
+				<form method="post" action="/connect">
+
+					<label for="email">Votre addrese mail</label><br /> 
+					<input type="email" name="email" value="Ex: toto@example.com"><br />
+
+					<label for="password">Tapez votre mot de passe</label><br /> 
+					<input type="password" name="password"><br /> 
+
+					<input type="submit" value="Envoyer"></input><br />
+				</form>
+			</td>
+			<td>
+			<h2>Inscription</h2>
+				<form action="Inscription" method="POST">
+					<label for="Nom">Nom</label><br /> <input type="text" name="Nom"
+						value="Votre nom"><br /> <label for="Prenom">Prenom</label><br />
+					<input type="text" name="Prenom" value="Votre Prenom"><br />
+
+					<label for="Email">Votre addrese mail</label><br /> <input
+						type="email" name="Email" value="Ex: toto@example.com"><br />
+
+					<label for="pass">Tapez votre mot de passe</label><br /> <input
+						type="password" name="pass"><br /> <label for="passConf">Confirmer
+						votre mot de passe</label><br /> <input type="password" name="passConf"><br />
+
+					<input type="submit" value="Envoyer"></input><br />
+				</form>
+			</td>
+		</tr>
+	</table>
+	<!-- <div style="clear:both;"></div>-->
+
+
+	<div id="footer">
+		<p>
+			Authors : BERNE Corentin, FERNANDES Jeremy, OCHIER Sebastien, SOULIER
+			Clement<br />IBD 2016 - M1 Info
+		</p>
+	</div>
+</body>
+</html>

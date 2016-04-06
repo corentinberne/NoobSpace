@@ -27,6 +27,16 @@ public enum Dao {
       em.close();
     }
   }
+  
+  public void editProfil(String mail, String name, String firstName, String birthDate, String city, String codePostal, String address) {
+	    synchronized (this) {
+		EntityManager em = EMFService.get().createEntityManager();
+		Query q = em.createQuery("select u from NoobspaceUser u where mail='" + mail + "'");
+	      NoobspaceUser user = (NoobspaceUser) q.getResultList().get(0);
+	      em.persist(user);
+	      em.close();
+	    }
+	  }
 
   public List<NoobspaceUser> getUsers() {
     EntityManager em = EMFService.get().createEntityManager();
