@@ -42,7 +42,19 @@ public enum Dao {
 	    q.setParameter("password", password);
 	    List<NoobspaceUser> users = q.getResultList();	    
 	    return (users.size()==1);
-	  }
+  }
+  
+  public NoobspaceUser getUser(String mail) {
+	    EntityManager em = EMFService.get().createEntityManager();
+	    Query q = em.createQuery("select u from NoobspaceUser u where u.mail= :mail");
+	    q.setParameter("mail", mail);
+	    List<NoobspaceUser> users = q.getResultList();
+	    if(users.size()==1)
+	    	return users.get(0);
+	    else {
+	    	return null;
+	    }
+  }
 
   public void remove(long id) {
     EntityManager em = EMFService.get().createEntityManager();

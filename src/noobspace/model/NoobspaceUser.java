@@ -1,30 +1,40 @@
 package noobspace.model;
 
+import java.util.ArrayList;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.google.appengine.api.datastore.Key;
+
 @Entity
 public class NoobspaceUser {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Key id;
 	
 	private String name;
 	private String firstName;
 	private String mail;
 	private String password;
 	private Profile profil; // Âge, lieu de vie, intérêts...
+	private ArrayList<NoobspaceUser> friends;
 	
 	public NoobspaceUser(String name, String firstName, String mail, String password) {
 		this.name = name;
 		this.firstName = firstName;
 		this.mail = mail;
 		this.password = password;
+		this.friends = new ArrayList<NoobspaceUser>();
 	}
 	
-	public Long getId() {
+	public ArrayList<NoobspaceUser> getFriends() {
+		return friends;
+	}
+
+	public Key getId() {
 		return id;
 	}
 
