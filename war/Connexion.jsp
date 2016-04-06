@@ -19,7 +19,7 @@
 		</div>
     	
     	<p>Sinon, tu peux te connecter ici!</p>
-        <form method="post" action="connexion">
+        <form method="post" action="/connect">
             <fieldset>
                 <label for="nom">Email :<span class="requis">*</span></label>
                 <input type="email" id="email" name="email" value="<c:out value="${utilisateur.email}"/>" size="20" maxlength="60" />
