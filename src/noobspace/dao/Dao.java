@@ -37,8 +37,10 @@ public enum Dao {
   
   public boolean checkUser(String mail, String password) {
 	    EntityManager em = EMFService.get().createEntityManager();
-	    Query q = em.createQuery("select u from NoobspaceUser u where mail=" + mail + " and password=" + password);
-	    List<NoobspaceUser> users = q.getResultList();
+	    Query q = em.createQuery("select u from NoobspaceUser u where u.mail= :mail and u.password= :password");
+	    q.setParameter("mail", mail);
+	    q.setParameter("password", password);
+	    List<NoobspaceUser> users = q.getResultList();	    
 	    return (users.size()==1);
 	  }
 

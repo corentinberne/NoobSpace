@@ -14,9 +14,7 @@
     	<h1>NoobSpace</h1>
     	
     	<p>Pas encore inscrit jeune Noob? C'est par ici!</p>
-    	<div class="bouton">
-		<input type="button" value="Inscription" href="Inscription.jsp"/>
-		</div>
+    	<a href="Inscription.jsp" target="_blank"> <input type="button" value="Inscription"> </a>
     	
     	<p>Sinon, tu peux te connecter ici!</p>
         <form method="post" action="/connect">
