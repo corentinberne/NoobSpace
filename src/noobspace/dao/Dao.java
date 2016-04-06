@@ -34,6 +34,13 @@ public enum Dao {
     List<NoobspaceUser> users = q.getResultList();
     return users;
   }
+  
+  public boolean checkUser(String mail, String password) {
+	    EntityManager em = EMFService.get().createEntityManager();
+	    Query q = em.createQuery("select u from NoobspaceUser u where mail=" + mail + " and password=" + password);
+	    List<NoobspaceUser> users = q.getResultList();
+	    return (users.size()==1);
+	  }
 
   public void remove(long id) {
     EntityManager em = EMFService.get().createEntityManager();
