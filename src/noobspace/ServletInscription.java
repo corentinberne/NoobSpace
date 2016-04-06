@@ -13,7 +13,7 @@ import com.google.appengine.api.users.UserServiceFactory;
 import noobspace.dao.Dao;
 
 @SuppressWarnings("serial")
-public class ServletCreateUser extends HttpServlet {
+public class ServletInscription extends HttpServlet {
     
   public void doPost(HttpServletRequest req, HttpServletResponse resp)throws IOException {
     System.out.println("Creating new noobspace user ");
@@ -23,14 +23,21 @@ public class ServletCreateUser extends HttpServlet {
       user = userService.getCurrentUser();
     }*/
 
-    String name = checkNull(req.getParameter("name"));
-    String firstName = checkNull(req.getParameter("first name"));
-    String mail = checkNull(req.getParameter("mail"));
-    String password = checkNull(req.getParameter("password"));
+    String nom = checkNull(req.getParameter("Nom"));
+    String prenom = checkNull(req.getParameter("Prenom"));
+    String email = checkNull(req.getParameter("Email"));
+    String password = checkNull(req.getParameter("pass"));
+    String passwordConf = checkNull(req.getParameter("passConf"));
 
-    Dao.INSTANCE.add(name, firstName, mail, password);
-
-    resp.sendRedirect("/UserApplication.jsp");
+    System.out.println("yolyoyoyoy");
+    
+    if(!password.equals(passwordConf))
+	 resp.sendRedirect("/Inscription.jsp");
+    
+    else{
+        Dao.INSTANCE.add(nom, prenom, email, password);
+        resp.sendRedirect("/UserApplication.jsp");
+    }
   }
 
   private String checkNull(String s) {
