@@ -1,0 +1,5 @@
+/gwt-unitCache/
+/.settings/
+/war/noobspace/*
+/war/WEB-INF/*
+/src/META-INF/*
