@@ -4,6 +4,7 @@
 <%@ page import="com.google.appengine.api.users.UserService" %>
 <%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
 <%@ page import="noobspace.model.NoobspaceUser" %>
+<%@ page import="noobspace.model.Profile" %>
 <%@ page import="noobspace.dao.Dao" %>
 
 <!DOCTYPE html>
@@ -43,7 +44,6 @@ if (user != null){
       <div style="float: right;"><a href="<%=url%>"><%=urlLinktext%></a> <%=(user==null? "" : user.getNickname())%></div>
     </div>
   </div>
-
 <div style="clear: both;"/>  
 You have a total number of <%= users.size() %>  users.
 
@@ -52,6 +52,7 @@ You have a total number of <%= users.size() %>  users.
       <th>Name </th>
       <th>First name</th>
       <th>mail</th>
+      <th>Profile.city</th>
     </tr>
 
 <% for (NoobspaceUser noobspaceUser : users) {%>
@@ -64,6 +65,16 @@ You have a total number of <%= users.size() %>  users.
 </td>
 <td>
 <%=noobspaceUser.getMail()%>
+</td>
+<td>
+<%
+Profile profile = dao.getProfil(noobspaceUser.getMail());
+
+if(profile != null){
+out.println(profile.getCity());}
+
+
+%>
 </td>
 <td>
 <a class="done" href="/done?id=<%=noobspaceUser.getId()%>" >Done</a>

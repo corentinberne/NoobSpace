@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 import com.google.appengine.api.datastore.Key;
 
@@ -19,15 +20,16 @@ public class NoobspaceUser {
 	private String firstName;
 	private String mail;
 	private String password;
-	private Profile profil; // Âge, lieu de vie, intérêts...
 	private ArrayList<String> friends;
-	
+	/*@OneToOne
+	private Profile profile;*/
 	public NoobspaceUser(String name, String firstName, String mail, String password) {
 		this.name = name;
 		this.firstName = firstName;
 		this.mail = mail;
 		this.password = password;
 		this.friends = new ArrayList<String>();
+		/*this.profile = new Profile(mail);*/
 	}
 	
 	public void addNoobFriend(String mail) {
@@ -68,12 +70,15 @@ public class NoobspaceUser {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Profile getProfil() {
-		return profil;
+
+	/*public Profile getProfile()
+	{
+		return profile;
 	}
-	public void setProfil(Profile profil) {
-		this.profil = profil;
-	}
-	
+
+	public void setProfile(Profile profil)
+	{
+		this.profile = profil;
+	}	*/
 	
 }

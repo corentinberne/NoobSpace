@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
@@ -18,7 +19,11 @@ public class ServletEditProfil extends HttpServlet {
   public void doPost(HttpServletRequest req, HttpServletResponse resp)throws IOException {
     System.out.println("Creating new noobspace user ");
 
-    String mail = "";
+    HttpSession session = req.getSession();
+    
+    
+    String mail = (String)session.getAttribute("mail");
+    System.out.println(mail);
     String nom = checkNull(req.getParameter("Nom"));
     String prenom = checkNull(req.getParameter("Prenom"));
     String birthDate = checkNull(req.getParameter("birthDate"));
@@ -28,9 +33,9 @@ public class ServletEditProfil extends HttpServlet {
 
     System.out.println("editage profil !!!!!");
     
-    
-    Dao.INSTANCE.editProfil(mail, nom, prenom, birthDate, city, address, codePostal);
-    resp.sendRedirect("/EditProfil.jsp");
+    Dao.INSTANCE.updateUserNames(nom, prenom,  mail);
+    Dao.INSTANCE.editProfile(mail, birthDate, city, codePostal ,address);
+    resp.sendRedirect("/Mainpage.jsp");
   }
 
   private String checkNull(String s) {

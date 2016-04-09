@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
@@ -29,11 +30,11 @@ public class ServletInscription extends HttpServlet {
     String password = checkNull(req.getParameter("pass"));
     String passwordConf = checkNull(req.getParameter("passConf"));
 
-    System.out.println("yolyoyoyoy");
-    
+    HttpSession session = req.getSession(true);
+    session.setAttribute("mail", email);
+    System.out.println(session.getAttribute("mail"));
     if(!password.equals(passwordConf))
 	 resp.sendRedirect("/Inscription.jsp");
-    
     else{
         Dao.INSTANCE.add(nom, prenom, email, password);
         resp.sendRedirect("/EditProfil.jsp");
