@@ -12,15 +12,37 @@ public enum Dao
 {
 	INSTANCE;
 
-	public List<NoobspaceUser> listUsers()
-	{
-		EntityManager em = EMFService.get().createEntityManager();
-		// read the existing entries
-		Query q = em.createQuery("select u from NoobspaceUser u");
-		List<NoobspaceUser> users = q.getResultList();
-		em.close();
-		return users;
-	}
+
+  public List<NoobspaceUser> listUsers() {
+    EntityManager em = EMFService.get().createEntityManager();
+    // read the existing entries
+    Query q = em.createQuery("select u from NoobspaceUser u");
+    List<NoobspaceUser> users = q.getResultList();
+    em.close();
+    return users;
+  }
+
+  
+  public void removeFriend(String deleterMail, String toDeleteMail) {
+	    synchronized (this) {
+	      EntityManager em = EMFService.get().createEntityManager();
+	      NoobspaceUser user = this.getUser(deleterMail);
+	      user.deleteNoobFriend(toDeleteMail);
+	      em.persist(user);
+	      em.close();
+	    }
+	  }
+  
+  public void addFriend(String adderMail, String toAddMail) {
+	    synchronized (this) {
+	      EntityManager em = EMFService.get().createEntityManager();
+	      NoobspaceUser user = this.getUser(adderMail);
+	      user.addNoobFriend(toAddMail);
+	      em.persist(user);
+	      em.close();
+	    }
+	  }
+  
 
 	public void add(String name, String firstName, String mail, String password)
 	{
@@ -33,17 +55,6 @@ public enum Dao
 		}
 	}
 
-	public void addFriend(String adderMail, String toAddMail)
-	{
-		synchronized (this)
-		{
-			EntityManager em = EMFService.get().createEntityManager();
-			NoobspaceUser user = this.getUser(adderMail);
-			user.addNoobFriend(toAddMail);
-			em.persist(user);
-			em.close();
-		}
-	}
 
 	public void updateUserNames(String name, String firstName, String mail)
 	{

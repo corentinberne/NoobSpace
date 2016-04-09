@@ -38,6 +38,14 @@ public class NoobspaceUser {
 		this.friends.add(mail);
 	}
 	
+	public void deleteNoobFriend(String mail) {
+		for( int i = 0; i < this.friends.size(); i++)
+			if (this.friends.get(i).equals(mail)) {
+				this.friends.remove(i);
+				return;
+			}
+	}
+	
 	public ArrayList<String> getFriends() {
 		return friends;
 	}
