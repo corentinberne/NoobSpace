@@ -20,17 +20,23 @@ public class NoobspaceUser {
 	private String mail;
 	private String password;
 	private Profile profil; // Âge, lieu de vie, intérêts...
-	private ArrayList<NoobspaceUser> friends;
+	private ArrayList<String> friends;
 	
 	public NoobspaceUser(String name, String firstName, String mail, String password) {
 		this.name = name;
 		this.firstName = firstName;
 		this.mail = mail;
 		this.password = password;
-		this.friends = new ArrayList<NoobspaceUser>();
+		this.friends = new ArrayList<String>();
 	}
 	
-	public ArrayList<NoobspaceUser> getFriends() {
+	public void addNoobFriend(String mail) {
+		if(this.friends == null)
+			this.friends = new ArrayList<String>();
+		this.friends.add(mail);
+	}
+	
+	public ArrayList<String> getFriends() {
 		return friends;
 	}
 

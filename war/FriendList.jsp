@@ -2,6 +2,12 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<%@ page import="java.util.List" %>
+<%@ page import="noobspace.model.NoobspaceUser" %>
+<%@ page import="noobspace.dao.Dao" %>
+<%@ page import="java.util.ArrayList" %>
+
+
 <!DOCTYPE html>
 
 <html>
@@ -17,19 +23,16 @@
 		
 		<%
 		Dao dao = Dao.INSTANCE;
-		
-		UserService userService = UserServiceFactory.getUserService();
-		User user = userService.getCurrentUser();
-		
-		String url = userService.createLoginURL(request.getRequestURI());
 		String urlLinktext = "Login";
-		NoobspaceUser noobSpaceUser = dao.getUser(request.getSession().getAttribute("mail"));
-		List<NoobSpaceUser> friends = noobSpaceUser.getFriends();
-		            
-		if (user != null){
-		    url = userService.createLogoutURL(request.getRequestURI());
-		    urlLinktext = "Logout";
+		NoobspaceUser noobSpaceUser = dao.getUser((String) request.getSession().getAttribute("mail"));
+		List<String> friendsMails = noobSpaceUser.getFriends();
+		
+		ArrayList<NoobspaceUser> friends = new ArrayList<NoobspaceUser>();
+		for(int i = 0; i < friendsMails.size(); i++){
+			NoobspaceUser u = dao.getUser(friendsMails.get(i));
+			friends.add(u);
 		}
+		
 		    
 		%>
 		  <div style="width: 100%;">
@@ -37,7 +40,6 @@
 		    <div class="topLine">
 		      <div style="float: left;"><img src="images/user.png" /></div>
 		      <div style="float: left;" class="headline">users</div>
-		      <div style="float: right;"><a href="<%=url%>"><%=urlLinktext%></a> <%=(user==null? "" : user.getNickname())%></div>
 		    </div>
 		  </div>
         
@@ -51,19 +53,19 @@
 		      <th>mail</th>
 		    </tr>
 		
-		<% for (NoobspaceUser noobspaceUser : friends) {%>
+		<% for (NoobspaceUser user : friends) {%>
 		<tr> 
 		<td>
-		<%=noobspaceUser.getName()%>
+		<%=user.getFirstName()%>
 		</td>
 		<td>
-		<%=noobspaceUser.getFirstName()%>
+		<%=user.getName()%>
 		</td>
 		<td>
-		<%=noobspaceUser.getMail()%>
+		<%=user.getMail()%>
 		</td>
 		<td>
-		<a class="deleteFriend" href="/deleteFriend?id=<%=noobspaceUser.getId()%>" >Supprimer ami</a>
+		<a class="done" href="/done?id=<%=user.getId()%>" >Done</a>
 		</td>
 		</tr> 
 		<%}

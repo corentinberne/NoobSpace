@@ -22,7 +22,7 @@ public class ServletConnectUser extends HttpServlet {
     String mail = checkNull(req.getParameter("email"));
     String password = checkNull(req.getParameter("password"));
 
-    HttpSession session = req.getSession();
+    HttpSession session = req.getSession(true);
     session.setAttribute("mail", mail);
     
     boolean authenticationSuccessful = Dao.INSTANCE.checkUser(mail, password);

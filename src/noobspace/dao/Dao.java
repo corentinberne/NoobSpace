@@ -15,6 +15,7 @@ public enum Dao {
     // read the existing entries
     Query q = em.createQuery("select u from NoobspaceUser u");
     List<NoobspaceUser> users = q.getResultList();
+    em.close();
     return users;
   }
 
@@ -27,6 +28,16 @@ public enum Dao {
       em.close();
     }
   }
+  
+  public void addFriend(String adderMail, String toAddMail) {
+	    synchronized (this) {
+	      EntityManager em = EMFService.get().createEntityManager();
+	      NoobspaceUser user = this.getUser(adderMail);
+	      user.addNoobFriend(toAddMail);
+	      em.persist(user);
+	      em.close();
+	    }
+	  }
   
   public void editProfil(String mail, String name, String firstName, String birthDate, String city, String codePostal, String address) {
 	    synchronized (this) {
@@ -42,6 +53,7 @@ public enum Dao {
     EntityManager em = EMFService.get().createEntityManager();
     Query q = em.createQuery("select u from NoobspaceUser u");
     List<NoobspaceUser> users = q.getResultList();
+    em.close();
     return users;
   }
   
@@ -50,7 +62,8 @@ public enum Dao {
 	    Query q = em.createQuery("select u from NoobspaceUser u where u.mail= :mail and u.password= :password");
 	    q.setParameter("mail", mail);
 	    q.setParameter("password", password);
-	    List<NoobspaceUser> users = q.getResultList();	    
+	    List<NoobspaceUser> users = q.getResultList();	
+	    em.close();
 	    return (users.size()==1);
   }
   
@@ -59,6 +72,7 @@ public enum Dao {
 	    Query q = em.createQuery("select u from NoobspaceUser u where u.mail= :mail");
 	    q.setParameter("mail", mail);
 	    List<NoobspaceUser> users = q.getResultList();
+	    em.close();
 	    if(users.size()==1)
 	    	return users.get(0);
 	    else {
