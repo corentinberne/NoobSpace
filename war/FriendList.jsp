@@ -13,7 +13,6 @@
 <html>
     <head>
         <meta charset="utf-8"/>
-        <link rel="stylesheet" href="NoobSpace.css" />
     </head>
     
     <body>
@@ -23,7 +22,6 @@
 		
 		<%
 		Dao dao = Dao.INSTANCE;
-		String urlLinktext = "Login";
 		NoobspaceUser noobSpaceUser = dao.getUser((String) request.getSession().getAttribute("mail"));
 		List<String> friendsMails = noobSpaceUser.getFriends();
 		
@@ -35,23 +33,16 @@
 		
 		    
 		%>
-		  <div style="width: 100%;">
-		    <div class="line"></div>
-		    <div class="topLine">
-		      <div style="float: left;"><img src="images/user.png" /></div>
-		      <div style="float: left;" class="headline">users</div>
-		    </div>
-		  </div>
         
         <div style="clear: both;"/>  
 		You have a total number of <%= friends.size() %>  friends.
 		
 		<table>
 		  <tr>
-		      <th>Name </th>
-		      <th>First name</th>
-		      <th>mail</th>
-		    </tr>
+		     <th>Name </th>
+		     <th>First name</th>
+		     <th>mail</th>
+		  </tr>
 		
 		<% for (NoobspaceUser user : friends) {%>
 		<tr> 
@@ -65,7 +56,7 @@
 		<%=user.getMail()%>
 		</td>
 		<td>
-		<a class="done" href="/done?id=<%=user.getId()%>" >Done</a>
+		<a class="done" href="/removeFriend?mail=<%=user.getMail()%>" >Supprimer</a>
 		</td>
 		</tr> 
 		<%}

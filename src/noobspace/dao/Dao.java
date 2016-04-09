@@ -29,6 +29,16 @@ public enum Dao {
     }
   }
   
+  public void removeFriend(String deleterMail, String toDeleteMail) {
+	    synchronized (this) {
+	      EntityManager em = EMFService.get().createEntityManager();
+	      NoobspaceUser user = this.getUser(deleterMail);
+	      user.deleteNoobFriend(toDeleteMail);
+	      em.persist(user);
+	      em.close();
+	    }
+	  }
+  
   public void addFriend(String adderMail, String toAddMail) {
 	    synchronized (this) {
 	      EntityManager em = EMFService.get().createEntityManager();

@@ -24,13 +24,20 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
     <servlet-name>EditProfil</servlet-name>
     <servlet-class>noobspace.ServletEditProfil</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>RemoveFriend</servlet-name>
+    <servlet-class>noobspace.ServletRemoveFriend</servlet-class>
+  </servlet>
   
   
   
   
   
   
-  
+  <servlet-mapping>
+    <servlet-name>RemoveFriend</servlet-name>
+    <url-pattern>/removeFriend</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>RemoveUser</servlet-name>
     <url-pattern>/done</url-pattern>
