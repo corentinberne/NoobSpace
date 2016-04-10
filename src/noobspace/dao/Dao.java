@@ -55,6 +55,16 @@ public enum Dao
 		}
 	}
 
+	public void creerProfilVide(String mail)
+	{
+		synchronized (this)
+		{
+			EntityManager em = EMFService.get().createEntityManager();
+			Profile userProfile = new Profile(mail);
+			em.persist(userProfile);
+			em.close();
+		}
+	}
 
 	public void updateUserNames(String name, String firstName, String mail)
 	{
@@ -89,6 +99,19 @@ public enum Dao
 		}
 	}
 
+	public boolean isEmailFree(String mail)
+	{synchronized (this)
+		{
+		EntityManager em = EMFService.get().createEntityManager();
+		Query q = em.createQuery("select u from NoobspaceUser u where u.mail= :mail");
+		q.setParameter("mail", mail);
+		List<NoobspaceUser> users = q.getResultList();
+		em.close();
+		System.out.println(users.size() == 0);
+		return users.size() == 0;
+		}
+	}
+	
 	public List<NoobspaceUser> getUsers()
 	{
 		EntityManager em = EMFService.get().createEntityManager();

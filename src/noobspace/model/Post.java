@@ -1,27 +1,46 @@
 package noobspace.model;
 
-public class Post {
-	private String message;
-	private String publicationDate;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Post
+{
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int		id;
+	private String	message;
+	private String	publicationDate;
+
 	// Note
-	
-	public Post(String message) {
+
+	public Post(String message)
+	{
 		super();
 		this.message = message;
 	}
-	
-	public String getMessage() {
+
+	public String getMessage()
+	{
 		return message;
 	}
-	public void setMessage(String message) {
+
+	public void setMessage(String message)
+	{
 		this.message = message;
 	}
-	public String getPublicationDate() {
+
+	public String getPublicationDate()
+	{
 		return publicationDate;
 	}
-	public void setPublicationDate(String publicationDate) {
+
+	public void setPublicationDate(String publicationDate)
+	{
 		this.publicationDate = publicationDate;
 	}
-	
-	
+
 }

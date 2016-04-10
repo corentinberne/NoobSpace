@@ -9,7 +9,12 @@
         <meta charset="utf-8"/>
         <link rel="stylesheet" href="NoobSpace.css" />
     </head>
-    
+    <%
+    //Redirection si l'utilisateur est deja connecte
+	  if(request.getSession() != null){
+	  	if(request.getSession().getAttribute("mail") != null){
+	  		out.print("<script>document.location.href=\"Mainpage.jsp\"</script>");}}
+ 	 %>
     <body>
     	<h1>NoobSpace</h1>
     	

@@ -7,8 +7,10 @@
 <%
 Dao dao = Dao.INSTANCE;
 String mail = (String)request.getSession().getAttribute("mail");
+
 NoobspaceUser currentUser = dao.getUser(mail);
 Profile currentProfile = dao.getProfil(mail);
+System.out.println(currentUser);
 if(currentUser != null){
 
 %>

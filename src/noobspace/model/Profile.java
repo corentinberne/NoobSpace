@@ -6,9 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import com.google.appengine.api.datastore.Key;
-
+ 
 @Entity
 public class Profile
 {
@@ -21,7 +22,11 @@ public class Profile
 	private String			codePostal;
 	private String			city;
 	private List<String>	interests;
+	
+	@OneToMany( targetEntity=Post.class )
 	private List<Post>		myPosts;
+	
+	@OneToMany( targetEntity=Post.class )
 	private List<Post>		postsFromFriends;
 
 	public Profile(String mail, String birthDate, String address, String codePostal, String city)
