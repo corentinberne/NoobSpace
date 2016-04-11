@@ -89,6 +89,14 @@ public class Profile
 	{
 		return interests;
 	}
+	
+	public boolean searchInterest(String interest){
+		for (String currentInterest : interests){
+			if(currentInterest.equals(interest))
+				return true;
+		}
+		return false;
+	}
 
 	public void setInterests(List<String> interests)
 	{

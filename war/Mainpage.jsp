@@ -35,7 +35,7 @@
 		</form>
 		
 		<p>Tu veux rechercher des Noob avec des intérêts en commun avec toi? C'est en-dessous!</p>    	
-    	<form action="/searchInterest" method="post" accept-charset="utf-8">
+    	<form action="/SearchInterestResults.jsp" method="post" accept-charset="utf-8">
 		  <table>
 		    <tr>
 		      <td><label for="interest">Intérêt</label></td>
