@@ -3,3 +3,33 @@ body {
 	color: brown;
 	font-family: 'Palatino Linotype';
 }
+
+#myFriendsPosts{
+	
+	background-color: white;
+	border : 1px solid brown;
+	
+}
+
+.friendPost{
+	
+	padding : 2px;
+	margin : 5px;
+	background-color: white;
+	border : 1px solid brown;
+	
+}
+
+.postDate{
+	
+	font-style: italic;
+	font-size: 0.8em;
+	
+}
+
+.postFrom{
+	
+	font-style: italic;
+	text-decoration: underline;
+	
+}
