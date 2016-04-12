@@ -42,6 +42,16 @@ public enum Dao {
 	    em.close();
 	}
     }
+    
+    public void addInterest(String mail, String interest) {
+    	synchronized (this) {
+    	    EntityManager em = EMFService.get().createEntityManager();
+    	    Profile userProfile = this.getProfil(mail);
+    	    userProfile.addInterest(interest);
+    	    em.persist(userProfile);
+    	    em.close();
+    	}
+        }
 
     public void add(String name, String firstName, String mail, String password) {
 	synchronized (this) {

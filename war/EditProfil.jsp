@@ -46,6 +46,41 @@ if(currentUser != null){
   	<input type="submit" value="Envoyer"></input><br/>
   </form>
   
+  <p>Montre à tes amis quels sont tes intérêts!</p>    	
+    	<form action="/addInterest" method="post" accept-charset="utf-8">
+		  <table>
+		    <tr>
+		      <td><label for="interest">Intérêt</label></td>
+		      <td><input type="text" name="interest" id="interest" size="65"/></td>
+		    </tr>
+		  	<tr>
+		      <td colspan="2" align="right"><input type="submit" value="Ajouter"/></td>
+		    </tr>
+		  </table>
+		</form>
+		
+		
+	<%
+		Profile profil = dao.getProfil((String) request.getSession().getAttribute("mail"));
+		List<String> interests = profil.getInterests();   
+	%>
+		
+	<table>
+		  <tr>
+		     <th>Intérêt </th>
+		  </tr>
+		
+		<% for (String interest : interests) {%>
+		<tr> 
+		<td>
+		<%=interest%>
+		</td>
+
+		</tr> 
+		<%}
+		%>
+		</table>
+  
 </body>
 </html>
 <%}%>

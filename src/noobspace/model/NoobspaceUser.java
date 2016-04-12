@@ -50,6 +50,15 @@ public class NoobspaceUser {
 		return friends;
 	}
 
+	public boolean hasFriend(String friendMail){
+		for( int i = 0; i < this.friends.size(); i++){
+			if (this.friends.get(i).equals(friendMail)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public Key getId() {
 		return id;
 	}

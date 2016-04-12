@@ -78,6 +78,12 @@ public class Profile {
 	}
 	return false;
     }
+    
+    public void addInterest(String interest){
+    	if(!searchInterest(interest)){
+    		interests.add(interest);
+    	}
+    }
 
     public String getCity() {
 	System.out.println(city);
