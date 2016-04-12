@@ -46,7 +46,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>Deconnexion</servlet-name>
 		<servlet-class>noobspace.ServletDeconnexion</servlet-class>
 	</servlet>
-
+	<servlet>
+		<servlet-name>RemovePost</servlet-name>
+		<servlet-class>noobspace.ServletRemovePost</servlet-class>
+	</servlet>
 
 
 
@@ -92,7 +95,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>Deconnexion</servlet-name>
 		<url-pattern>/Deconnexion</url-pattern>
 	</servlet-mapping>
-
+	<servlet-mapping>
+		<servlet-name>RemovePost</servlet-name>
+		<url-pattern>/SuprPost</url-pattern>
+	</servlet-mapping>
 
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
