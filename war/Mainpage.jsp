@@ -7,6 +7,7 @@
 <%@ page import="noobspace.model.Post" %>
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.Iterator"%>
+<%@ page import="noobspace.model.NoobspaceUser"%>
 <!DOCTYPE html>
 
 <html>
@@ -53,7 +54,7 @@
 		  </table>
 		</form>
     	
-    	<p>Les derniers posts des Noobs de ta liste d'amis</p>
+    	<p>Tes derniers posts de Noob</p>
     	<div id="myPosts">
     	<%
     	
@@ -74,6 +75,57 @@
     	}}
     	%>
     	</div>
+    	
+    	
+    	<p>Les derniers posts des Noobs de ta liste d'amis</p>
+    	<div id="myFriendsPosts">
+    	<%
+
+    	NoobspaceUser user = d.getUser((String)request.getSession().getAttribute("mail"));
+    	List friends = user.getFriends();
+    	Iterator<String> it;
+    	String friend;
+    	Profile profilFriend;
+    	List postsFriend;
+    	Iterator<Post> itPostFriend;
+    	Post courantFriend;
+    	NoobspaceUser friendUser;
+		if(friends == null){
+		%>
+    		<div class="friendPost">
+    		<p>Aucun ami</p>
+    		</div>
+    	<%
+    	} else {
+		    it = friends.iterator();
+		    while(it.hasNext()){
+		    	friend = it.next();
+		    	%>
+		    	<div class="friendPost">
+		    	<%
+		    	profilFriend = d.getProfil(friend);
+		    	friendUser = d.getUser(friend);
+		    	postsFriend = d.searchPost(profilFriend);
+		    	if(posts != null){
+		    		itPostFriend = postsFriend.iterator();
+		    		while(itPostFriend.hasNext()){
+		    			courantFriend = itPostFriend.next();
+		    			%>
+		    			<div class="friendPost">
+		    			<p class="postDate"><%=friendUser.getName()+ " " + friendUser.getFirstName()%> <%=courantFriend.getPublicationDate().toString()%></p>
+		    			<p class="postMessage"><%=courantFriend.getMessage()%></p>
+		    			<!--<a href="/SuprPost?id=<%=courantFriend.getId().getId()%>">X</a>-->
+		    			</div>
+		    			<%
+				    }
+				}
+				%>
+				</div>
+				<%
+			}
+		}
+		%>
+		</div>
 		<a href="Deconnexion"> <input type="button" value="Se déconnecter"> </a>
     </body>
 </html>

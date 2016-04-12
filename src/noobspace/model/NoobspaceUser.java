@@ -19,15 +19,13 @@ public class NoobspaceUser {
 	private String mail;
 	private String password;
 	private ArrayList<String> friends;
-	/*@OneToOne
-	private Profile profile;*/
+	
 	public NoobspaceUser(String name, String firstName, String mail, String password) {
 		this.name = name;
 		this.firstName = firstName;
 		this.mail = mail;
 		this.password = password;
 		this.friends = new ArrayList<String>();
-		/*this.profile = new Profile(mail);*/
 	}
 	
 	public void addNoobFriend(String mail) {
@@ -96,14 +94,5 @@ public class NoobspaceUser {
 	    
 	}
 	
-	/*public Profile getProfile()
-	{
-		return profile;
-	}
-
-	public void setProfile(Profile profil)
-	{
-		this.profile = profil;
-	}	*/
 	
 }

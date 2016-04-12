@@ -29,6 +29,10 @@ public class Profile {
     @OneToMany(mappedBy = "user", targetEntity = Post.class, cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Post> myPosts;
 
+    
+    /*
+     * List des posts de nos amis à notre propos (sur notre mur)
+     */
     @OneToMany(mappedBy = "user", targetEntity = Post.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Post> postsFromFriends;
 
