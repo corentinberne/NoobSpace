@@ -29,8 +29,10 @@
 		
 		ArrayList<NoobspaceUser> usersList = new ArrayList<NoobspaceUser>();
 		for(int i = 0; i < mailsList.size(); i++){
-			NoobspaceUser u = dao.getUser(mailsList.get(i));
-			usersList.add(u);
+			if(!mailsList.get(i).equals((String) request.getSession().getAttribute("mail"))){
+				NoobspaceUser u = dao.getUser(mailsList.get(i));
+				usersList.add(u);
+			}
 		}
 		  
 		%>
@@ -58,6 +60,9 @@
 		</td>
 		<td>
 		<a class="done" href="/addFriend?mail=<%=user.getMail()%>" >Ajouter</a>
+		</td>
+		<td>
+		<a class="done" href="/OtherUserFriendList.jsp?mail=<%=user.getMail()%>" >Voir amis</a>
 		</td>
 		</tr> 
 		<%}
