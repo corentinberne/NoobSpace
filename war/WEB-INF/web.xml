@@ -21,6 +21,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-class>noobspace.ServletAddInterest</servlet-class>
 	</servlet>
 	<servlet>
+		<servlet-name>RemoveInterest</servlet-name>
+		<servlet-class>noobspace.ServletRemoveInterest</servlet-class>
+	</servlet>
+	<servlet>
 		<servlet-name>RegisterUser</servlet-name>
 		<servlet-class>noobspace.ServletInscription</servlet-class>
 	</servlet>
@@ -70,6 +74,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	<servlet-mapping>
 		<servlet-name>AddInterest</servlet-name>
 		<url-pattern>/addInterest</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RemoveInterest</servlet-name>
+		<url-pattern>/removeInterest</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>EditProfil</servlet-name>

@@ -37,9 +37,12 @@ public enum Dao {
 	synchronized (this) {
 	    EntityManager em = EMFService.get().createEntityManager();
 	    NoobspaceUser user = this.getUser(adderMail);
-	    user.addNoobFriend(toAddMail);
+	    NoobspaceUser userToAdd = this.getUser(toAddMail); 
+	    if(userToAdd != null){
+	    	user.addNoobFriend(toAddMail);
+	    }
 	    em.persist(user);
-	    em.close();
+    	em.close();
 	}
     }
     
@@ -48,6 +51,16 @@ public enum Dao {
     	    EntityManager em = EMFService.get().createEntityManager();
     	    Profile userProfile = this.getProfil(mail);
     	    userProfile.addInterest(interest);
+    	    em.persist(userProfile);
+    	    em.close();
+    }
+    }
+    
+    public void removeInterest(String mail, String interest) {
+    	synchronized (this) {
+    	    EntityManager em = EMFService.get().createEntityManager();
+    	    Profile userProfile = this.getProfil(mail);
+    	    userProfile.removeInterest(interest);
     	    em.persist(userProfile);
     	    em.close();
     	}

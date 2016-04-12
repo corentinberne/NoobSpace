@@ -28,7 +28,8 @@ public class ServletAddInterest extends HttpServlet {
     String interest = checkNull(req.getParameter("interest"));
     HttpSession session = req.getSession();
     String sessionMail = (String) session.getAttribute("mail");
-    dao.addInterest(sessionMail, interest);
+    if(!dao.getProfil(sessionMail).searchInterest(interest))
+    	dao.addInterest(sessionMail, interest);
     
     resp.sendRedirect("/EditProfil.jsp");
   }

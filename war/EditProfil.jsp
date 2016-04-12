@@ -75,7 +75,9 @@ if(currentUser != null){
 		<td>
 		<%=interest%>
 		</td>
-
+		<td>
+		<a class="done" href="/removeInterest?interest=<%=interest%>" >Supprimer</a>
+		</td>
 		</tr> 
 		<%}
 		%>

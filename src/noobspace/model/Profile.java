@@ -84,6 +84,14 @@ public class Profile {
     		interests.add(interest);
     	}
     }
+    
+    public void removeInterest(String interest){
+    	for( int i = 0; i < this.interests.size(); i++)
+			if (this.interests.get(i).equals(interest)) {
+				this.interests.remove(i);
+				return;
+			}
+    }
 
     public String getCity() {
 	System.out.println(city);
