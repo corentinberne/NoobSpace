@@ -36,7 +36,7 @@
   </head>
   <%
   if(request.getSession() != null){
-  	if(request.getSession().getAttribute("mail") != null){
+  	if(request.getSession().getAttribute("mail") == null){
   		out.print("<script>document.location.href=\"Mainpage.jsp\"</script>");}}
   %>
   <body>

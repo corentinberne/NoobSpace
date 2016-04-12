@@ -28,6 +28,12 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>RemoveFriend</servlet-name>
 		<servlet-class>noobspace.ServletRemoveFriend</servlet-class>
 	</servlet>
+	
+	<servlet>
+		<servlet-name>CreatePost</servlet-name>
+		<servlet-class>noobspace.ServletCreatePost</servlet-class>
+	</servlet>
+	
 	<servlet>
 		<servlet-name>Deconnexion</servlet-name>
 		<servlet-class>noobspace.ServletDeconnexion</servlet-class>
@@ -61,6 +67,11 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>EditProfil</servlet-name>
 		<url-pattern>/EditProfil</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CreatePost</servlet-name>
+		<url-pattern>/CreatePost</url-pattern>
+	</servlet-mapping>
+	
 	<servlet-mapping>
 		<servlet-name>Deconnexion</servlet-name>
 		<url-pattern>/Deconnexion</url-pattern>

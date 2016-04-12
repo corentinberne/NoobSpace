@@ -15,6 +15,7 @@
     	<p>Tu veux voir la liste des Noobs qui te servent d'amis? C'est juste ici!</p>
     	<a href="FriendList.jsp"> <input type="button" value="Liste d'amis"> </a><br/>
     	<a href="EditProfil.jsp"> <input type="button" value="Modifier mon profil"> </a>
+    	<a href="NewPost.jsp"> <input type="button" value="Publier"> </a><br/>
     	<p>Tu veux te faire de nouveaux amis? Pour en ajouter c'est par là!</p>    	
     	<form action="/addFriend" method="post" accept-charset="utf-8">
 		  <table>
