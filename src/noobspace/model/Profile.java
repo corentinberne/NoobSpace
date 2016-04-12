@@ -18,6 +18,7 @@ public class Profile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Key id;
+
     private String mail;
     private String birthDate;
     private String address;
@@ -47,6 +48,15 @@ public class Profile {
 	this.postsFromFriends = new ArrayList<Post>();
     }
 
+
+    public Key getId() {
+        return id;
+    }
+
+    public void setId(Key id) {
+        this.id = id;
+    }
+    
     public String getBirthDate() {
 	return birthDate;
     }
@@ -115,14 +125,7 @@ public class Profile {
     }
 
     public void removeMyPosts(Post p) {
-	int i = 0;
-	while (i < this.myPosts.size()) {
-	    if (this.myPosts.get(i).equals(p))
-		break;
-	    i++;
-	}
-	if (i < this.myPosts.size())
-	    this.myPosts.remove(i);
+	this.myPosts.remove(p);
     }
 
     public List<Post> getPostsFromFriends() {

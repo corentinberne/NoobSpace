@@ -2,6 +2,11 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<%@ page import="noobspace.dao.Dao" %>
+<%@ page import="noobspace.model.Profile" %>
+<%@ page import="noobspace.model.Post" %>
+<%@ page import="java.util.List"%>
+<%@ page import="java.util.Iterator"%>
 <!DOCTYPE html>
 
 <html>
@@ -49,6 +54,26 @@
 		</form>
     	
     	<p>Les derniers posts des Noobs de ta liste d'amis</p>
+    	<div id="myPosts">
+    	<%
+    	
+    	Dao d = Dao.INSTANCE;
+    	Profile profil = d.getProfil((String)request.getSession().getAttribute("mail"));
+    	List posts = d.searchPost(profil);
+    	if(posts != null){
+	    	Iterator<Post> it = posts.iterator();
+	    	while(it.hasNext()){
+	    		Post courant = it.next();
+	    	%>
+	    		<div class="myPost">
+	    			<p class="postDate"><%=courant.getPublicationDate().toString()%></p>
+	    			<p class="postMessage"><%=courant.getMessage()%></p>
+	    			<!--<a href="/SuprPost?id=<%=courant.getId().getId()%>">X</a>-->
+	    		</div>
+	    	<%
+    	}}
+    	%>
+    	</div>
 		<a href="Deconnexion"> <input type="button" value="Se déconnecter"> </a>
     </body>
 </html>

@@ -19,6 +19,8 @@ public class Post implements Serializable
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Key	id;
+
+
 	private String	message;
 	private String	publicationDate;
 	@ManyToOne(fetch = FetchType.LAZY) 
@@ -37,7 +39,13 @@ public class Post implements Serializable
 		this.message = message;
 		this.publicationDate = date;
 	}
+	public Key getId() {
+	    return id;
+	}
 
+	public void setId(Key id) {
+	    this.id = id;
+	}
 	public String getMessage()
 	{
 		return message;

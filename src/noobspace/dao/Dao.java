@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import com.google.appengine.api.datastore.Key;
 import noobspace.model.NoobspaceUser;
 import noobspace.model.Post;
 import noobspace.model.Profile;
@@ -166,16 +167,48 @@ public enum Dao {
 	em.close();
     }
     
-    public void searchPost(long id) {
+    public List<Post> searchPost(Profile id) {
+	
+	EntityManager em = EMFService.get().createEntityManager();
+	Query q = em.createQuery("select p from Post p where p.user = :id");
+	q.setParameter("id", id);
+	List<Post> posts = q.getResultList();
+	em.close();
+	return posts;
 	
     }
     
     public void removePost(String mail, Post p) {
+	
+	
+	
 	EntityManager em = EMFService.get().createEntityManager();
 	Profile userProfile = new Profile(mail);
-	userProfile.removeMyPosts(p);
+
+	System.out.println("Suppresion post2");
+	userProfile.removeMyPosts(p);System.out.println("Suppresion post : " + p);
 	em.persist(userProfile);
 	em.close();
+	
+	System.out.println("Suppresion post1");
+	EntityManager em2 = EMFService.get().createEntityManager();
+	em2.remove(p);
+	System.out.println("Suppresion post12");
+	em2.close();
+	
+    }
+    
+    public Post getPost(long id) {
+	EntityManager em = EMFService.get().createEntityManager();
+	Query q = em.createQuery("select p from Post p");
+	List<Post> Posts = q.getResultList();
+	for (Post p : Posts) {
+	    if(p.getId().getId() == id){
+		em.close();
+		return p;}
+	}
+	em.close();
+	return null;
     }
 
 	

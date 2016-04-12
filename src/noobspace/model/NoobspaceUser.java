@@ -6,8 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-
 import com.google.appengine.api.datastore.Key;
 
 @Entity
@@ -79,6 +77,16 @@ public class NoobspaceUser {
 		this.password = password;
 	}
 
+	public boolean equals(Object o){
+	    
+	    if(o == null || !(o instanceof NoobspaceUser))
+		return false;
+	    
+	    NoobspaceUser u = (NoobspaceUser)o;
+	    return u.mail.equals(this.mail);
+	    
+	}
+	
 	/*public Profile getProfile()
 	{
 		return profile;
