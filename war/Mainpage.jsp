@@ -69,7 +69,6 @@
 	    		<div class="myPost">
 	    			<p class="postDate"><%=courant.getPublicationDate().toString()%></p>
 	    			<p class="postMessage"><%=courant.getMessage()%></p>
-	    			<!--<a href="/SuprPost?id=<%=courant.getId().getId()%>">X</a>-->
 	    		</div>
 	    	<%
     	}}
@@ -77,8 +76,8 @@
     	</div>
     	
     	
-    	<p>Les derniers posts des Noobs de ta liste d'amis</p>
     	<div id="myFriendsPosts">
+    	<p>Les derniers posts des Noobs de ta liste d'amis</p>
     	<%
 
     	NoobspaceUser user = d.getUser((String)request.getSession().getAttribute("mail"));
@@ -101,7 +100,7 @@
 		    while(it.hasNext()){
 		    	friend = it.next();
 		    	%>
-		    	<div class="friendPost">
+		    	<div class="friendPost2">
 		    	<%
 		    	profilFriend = d.getProfil(friend);
 		    	friendUser = d.getUser(friend);
@@ -112,7 +111,7 @@
 		    			courantFriend = itPostFriend.next();
 		    			%>
 		    			<div class="friendPost">
-		    			<p class="postDate"><%=friendUser.getName()+ " " + friendUser.getFirstName()%> <%=courantFriend.getPublicationDate().toString()%></p>
+		    			<p class="postDate">De <span class="postFrom"><%=friendUser.getName()+ " " + friendUser.getFirstName()%></span> Le <%=courantFriend.getPublicationDate().toString()%></p>
 		    			<p class="postMessage"><%=courantFriend.getMessage()%></p>
 		    			<!--<a href="/SuprPost?id=<%=courantFriend.getId().getId()%>">X</a>-->
 		    			</div>

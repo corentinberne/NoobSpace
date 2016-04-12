@@ -108,7 +108,6 @@ public class Profile {
     }
 
     public String getCity() {
-	System.out.println(city);
 	return city;
     }
 

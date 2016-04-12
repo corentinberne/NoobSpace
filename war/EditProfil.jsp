@@ -11,7 +11,12 @@ Thread.sleep(20);
 NoobspaceUser currentUser = dao.getUser(mail);
 Profile currentProfile = dao.getProfil(mail);
 if(currentUser != null){
-
+	String name = (currentUser.getName() == null ||currentUser.getName().equals("null")) ? "Votre nom" : currentUser.getName();
+	String prenom = (currentUser.getFirstName() == null ||currentUser.getFirstName().equals("null")) ? "Votre prenom" : currentUser.getFirstName();
+	String date = (currentProfile.getBirthDate() == null ||currentProfile.getBirthDate().equals("null")) ? "dd/mm/aaaa" : currentProfile.getBirthDate();
+	String city = (currentProfile.getCity() == null ||currentProfile.getCity().equals("null")) ? "Ville" : currentProfile.getCity();
+	String postal = (currentProfile.getCodePostal() == null ||currentProfile.getCodePostal().equals("null")) ? "Code postal" : currentProfile.getCodePostal();
+	String address = (currentProfile.getAddress() == null ||currentProfile.getAddress().equals("null")) ? "Adresse" : currentProfile.getAddress();
 %>
 
 <!DOCTYPE html>
@@ -26,22 +31,22 @@ if(currentUser != null){
   
   <form action="EditProfil" method="POST">
   	<label for="Nom">Nom</label><br/>
-  	<input type="text" name="Nom" value="<%=currentUser.getName()%>" ><br/>
+  	<input type="text" name="Nom" value="<%=name%>" ><br/>
   	
   	<label for="Prenom">Prenom</label><br/>
-  	<input type="text" name="Prenom" value="<%=currentUser.getFirstName()%>"><br/>
+  	<input type="text" name="Prenom" value="<%=prenom%>"><br/>
 
   	<label for="birthDate">Date de Naissance</label><br/>
-  	<input type="date" name="birthDate" value="<%=currentProfile.getBirthDate()%>"><br/>
+  	<input type="date" name="birthDate" value="<%=date%>"><br/>
   	
   	<label for="city">Votre ville</label><br/>
-  	<input type="text" name="city" value="<%=currentProfile.getCity()%>"><br/>
+  	<input type="text" name="city" value="<%=city%>"><br/>
   	
   	<label for="postal">Code Postal</label><br/>
-  	<input type="text" name="postal" value="<%=currentProfile.getCodePostal()%>"><br/>
+  	<input type="text" name="postal" value="<%=postal%>"><br/>
   	
   	<label for="address">Votre adresse</label><br/>
-  	<input type="text" name="address" value="<%=currentProfile.getAddress()%>"><br/>
+  	<input type="text" name="address" value="<%=address%>"><br/>
   	
   	<input type="submit" value="Envoyer"></input><br/>
   </form>
