@@ -24,10 +24,10 @@ public class Profile {
     private String city;
     private List<String> interests;
 
-    @OneToMany(mappedBy = "user",targetEntity = Post.class, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", targetEntity = Post.class, cascade = CascadeType.ALL)
     private List<Post> myPosts;
 
-    @OneToMany(mappedBy = "user",targetEntity = Post.class, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", targetEntity = Post.class, cascade = CascadeType.ALL)
     private List<Post> postsFromFriends;
 
     public Profile(String mail, String birthDate, String address, String codePostal, String city) {
@@ -36,7 +36,7 @@ public class Profile {
 	this.address = address;
 	this.codePostal = codePostal;
 	this.city = city;
-//	this.postsFromFriends = new ArrayList<Post>();
+	// this.postsFromFriends = new ArrayList<Post>();
     }
 
     public Profile(String mail) {
@@ -70,6 +70,14 @@ public class Profile {
 	this.codePostal = codePostal;
     }
 
+    public boolean searchInterest(String interest) {
+	for (String currentInterest : interests) {
+	    if (currentInterest.equals(interest))
+		return true;
+	}
+	return false;
+    }
+
     public String getCity() {
 	System.out.println(city);
 	return city;
@@ -100,7 +108,7 @@ public class Profile {
     }
 
     public void addMyPosts(Post p) {
-	if(this.myPosts == null)
+	if (this.myPosts == null)
 	    this.myPosts = new ArrayList<Post>();
 	this.myPosts.add(p);
     }

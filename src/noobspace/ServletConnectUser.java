@@ -27,7 +27,7 @@ public class ServletConnectUser extends HttpServlet {
     
     boolean authenticationSuccessful = Dao.INSTANCE.checkUser(mail, password);
     if(!authenticationSuccessful){
-    	resp.sendRedirect("/Connexion.jsp");
+    	resp.sendRedirect("/index.html");
     }
     else {
     	resp.sendRedirect("/Mainpage.jsp");

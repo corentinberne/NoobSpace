@@ -9,6 +9,12 @@
         <meta charset="utf-8"/>
         <link href="css/Mainpage.css" type="text/css" rel="stylesheet">
     </head>
+     <%
+  if(request.getSession() != null){
+  	if(request.getSession().getAttribute("mail") == null){
+  		System.out.println(request.getSession().getAttribute("mail"));
+  		out.print("<script>document.location.href=\"index.html\"</script>");}}
+  %>
     <body>
     	<h1>NoobSpace</h1>
     	
@@ -25,6 +31,19 @@
 		    </tr>
 		  	<tr>
 		      <td colspan="2" align="right"><input type="submit" value="Ajouter"/></td>
+		    </tr>
+		  </table>
+		</form>
+		
+		<p>Tu veux rechercher des Noob avec des intérêts en commun avec toi? C'est en-dessous!</p>    	
+    	<form action="/SearchInterestResults.jsp" method="post" accept-charset="utf-8">
+		  <table>
+		    <tr>
+		      <td><label for="interest">Intérêt</label></td>
+		      <td><input type="interest" name="interest" id="interest" size="65"/></td>
+		    </tr>
+		  	<tr>
+		      <td colspan="2" align="right"><input type="submit" value="Rechercher"/></td>
 		    </tr>
 		  </table>
 		</form>

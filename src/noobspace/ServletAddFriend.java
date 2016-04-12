@@ -25,9 +25,8 @@ public class ServletAddFriend extends HttpServlet {
       user = userService.getCurrentUser();
     }*/
 
-    String mail = checkNull(req.getParameter("mail"));
-    
-    HttpSession session = req.getSession();
+    String mail = checkNull(req.getParameter("mail"));     
+    HttpSession session = req.getSession(); 
     Dao.INSTANCE.addFriend((String) session.getAttribute("mail"), mail);
 
     resp.sendRedirect("/Mainpage.jsp");

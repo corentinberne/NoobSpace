@@ -1,6 +1,7 @@
 package noobspace.dao;
 
 import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -176,4 +177,25 @@ public enum Dao {
 	em.persist(userProfile);
 	em.close();
     }
+
+	
+	public List<Profile> getProfiles()
+	{
+		EntityManager em = EMFService.get().createEntityManager();
+		Query q = em.createQuery("select p from Profile p");
+		List<Profile> profiles = q.getResultList();
+		em.close();
+		return profiles;
+	}
+	
+	public List<String> getInterest(String interestName){
+		List<String> mails = new ArrayList<String>();
+		List<Profile> profiles = getProfiles();
+		for (Profile currentProfile : profiles){
+			if(currentProfile.searchInterest(interestName))
+				mails.add(currentProfile.getMail());
+		}
+		return mails;
+	}
+
 }
