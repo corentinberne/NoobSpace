@@ -32,7 +32,7 @@
 		  <table>
 		    <tr>
 		      <td><label for="mail">Mail</label></td>
-		      <td><input type="text" name="mail" id="mail" size="65"/></td>
+		      <td><input type="email" name="mail" id="mail" size="65"/></td>
 		    </tr>
 		  	<tr>
 		      <td colspan="2" align="right"><input type="submit" value="Ajouter"/></td>

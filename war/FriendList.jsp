@@ -30,7 +30,6 @@
 			NoobspaceUser u = dao.getUser(friendsMails.get(i));
 			friends.add(u);
 		}
-		
 		    
 		%>
         
