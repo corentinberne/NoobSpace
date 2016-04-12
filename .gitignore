@@ -1,5 +1,9 @@
 /gwt-unitCache/
-/.settings/
+/.settings/*
 /war/noobspace/*
 /war/WEB-INF/*
 /src/META-INF/*
+/src/.gitignore
+/war/.gitignore
+/src/META-INF/jdocondfig.xml
+/war/WEB-INF/appengine-generated/*
