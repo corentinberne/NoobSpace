@@ -1,7 +1,5 @@
 package noobspace.shared;
 
-import java.util.regex.Pattern;
-
 /**
  * <p>
  * FieldVerifier validates that the name the user enters is valid.
@@ -44,12 +42,5 @@ public class FieldVerifier
 			return false;
 		}
 		return name.length() > 3;
-	}
-
-	public static boolean isValidEmail(String mail)
-	{
-
-		String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-		return (mail == null)? false : Pattern.matches(EMAIL_PATTERN, mail);
 	}
 }

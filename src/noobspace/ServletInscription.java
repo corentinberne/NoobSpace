@@ -3,6 +3,7 @@ package noobspace;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,13 @@ public class ServletInscription extends HttpServlet
 {
 
 	public static final int MIN_PASS_LENGTH = 6;
+	
+	public static boolean isValidEmail(String mail)
+	{
+
+		String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+		return (mail == null)? false : Pattern.matches(EMAIL_PATTERN, mail);
+	}
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException
 	{
@@ -65,7 +73,7 @@ public class ServletInscription extends HttpServlet
 
 		Map<String, String> erreurs = new HashMap<String, String>();
 		session.setAttribute("erreurs", erreurs);
-		boolean res = FieldVerifier.isValidEmail(email);
+		boolean res = isValidEmail(email);
 		if (!res)
 			erreurs.put("mail", "Format d'email invalide");
 		else if(!Dao.INSTANCE.isEmailFree(email)){
