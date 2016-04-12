@@ -10,16 +10,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.google.appengine.api.datastore.Key;
 @Entity
 public class Post implements Serializable
 {
 
+    private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int	id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Key	id;
 	private String	message;
 	private String	publicationDate;
-	@ManyToOne(fetch = FetchType.LAZY) private Profile user;
+	@ManyToOne(fetch = FetchType.LAZY) 
+	private Profile user;
 	// Note
 
 	public Post(String message)

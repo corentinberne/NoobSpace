@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,10 +25,10 @@ public class Profile {
     private String city;
     private List<String> interests;
 
-    @OneToMany(mappedBy = "user", targetEntity = Post.class, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", targetEntity = Post.class, cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Post> myPosts;
 
-    @OneToMany(mappedBy = "user", targetEntity = Post.class, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", targetEntity = Post.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Post> postsFromFriends;
 
     public Profile(String mail, String birthDate, String address, String codePostal, String city) {
