@@ -13,12 +13,18 @@
 <html>
     <head>
         <meta charset="utf-8"/>
+        <link href="css/Mainpage.css" type="text/css" rel="stylesheet">
     </head>
     
     <body>
-    	<h1>NoobSpace</h1>
+    	<div>
+    	 <h1 style="float:left;">NoobSpace</h1>
+    	 <a href="Mainpage.jsp" style="float:left;"> <input type="button" value="Accueil"> </a>
+    	 <a href="Deconnexion" style="float:left;"> <input type="button" value="Se déconnecter"> </a>
+    	</div>
+    	<div style="clear:both;"></div>
 
-		<p>Votre liste d'amis</p>
+		<h2>Votre liste d'amis</h2>
 		
 		<%
 		Dao dao = Dao.INSTANCE;
@@ -36,7 +42,7 @@
         <div style="clear: both;"/>  
 		You have a total number of <%= friends.size() %>  friends.
 		
-		<table>
+		<table id="listeAmis">
 		  <tr>
 		     <th>Name </th>
 		     <th>First name</th>
@@ -55,13 +61,13 @@
 		<%=user.getMail()%>
 		</td>
 		<td>
-		<a class="done" href="/OtherUserFriendList.jsp?mail=<%=user.getMail()%>" >Voir amis</a>
+		<a class="done" href="/OtherUserFriendList.jsp?mail=<%=user.getMail()%>" >Voir ses amis</a>
 		</td>
 		<td>
-		<a class="done" href="/OtherUserProfile.jsp?mail=<%=user.getMail()%>" >Voir profil</a>
+		<a class="done" href="/OtherUserProfile.jsp?mail=<%=user.getMail()%>" >Voir son profil</a>
 		</td>
 		<td>
-		<a class="done" href="/removeFriend?mail=<%=user.getMail()%>" >Supprimer</a>
+		<a class="done" href="/removeFriend?mail=<%=user.getMail()%>" >[X]</a>
 		</td>
 		</tr> 
 		<%}

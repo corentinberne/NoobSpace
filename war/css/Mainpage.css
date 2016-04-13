@@ -11,7 +11,7 @@ body {
 	
 }
 
-.friendPost{
+.friendPost, #listeAmis{
 	
 	padding : 2px;
 	margin : 5px;
@@ -25,6 +25,13 @@ body {
 	font-style: italic;
 	font-size: 0.8em;
 	
+}
+
+.interests{
+	padding : 2px;
+	margin : 5px;
+	background-color: white;
+	border : 1px solid brown;
 }
 
 .postFrom{

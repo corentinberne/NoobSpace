@@ -16,7 +16,12 @@
 	  		out.print("<script>document.location.href=\"Mainpage.jsp\"</script>");}}
  	 %>
     <body>
-    	<h1>NoobSpace</h1>
+    	<div>
+    	 <h1 style="float:left;">NoobSpace</h1>
+    	 <a href="Mainpage.jsp" style="float:left;"> <input type="button" value="Accueil"> </a>
+    	 <a href="Deconnexion" style="float:left;"> <input type="button" value="Se déconnecter"> </a>
+    	</div>
+    	<div style="clear:both;"></div>
     	
     	<p>Pas encore inscrit jeune Noob? C'est par ici!</p>
     	<a href="Inscription.jsp" target="_blank"> <input type="button" value="Inscription"> </a>

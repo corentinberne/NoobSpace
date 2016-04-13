@@ -26,42 +26,11 @@
 		List<String> interests = profile.getInterests();
 		    
 		%>
-		<table>
-			<tr><p>Vous consultez le profil de <%=user.getFirstName()%> <%=user.getName()%></p>
-			</tr>
-			<tr>
-				<td><p>Adresse e-mail : <%=user.getMail()%></p>
-				</td>
-			</tr>
-			<tr>
-				<td><p>Né le : <%=profile.getBirthDate()%></p>
-				</td>
-			</tr>
-			<tr>
-				<td><p>Habite : <%=profile.getAddress()%>, <%=profile.getCodePostal()%> <%=profile.getCity()%></p>
-				</td>
-			</tr>
-			<tr>
-				<p>Intérêt </p>
-			</tr>
-			<tr>
-				<% int i = 0;
-					for (String interest : interests) { %>
-				<td class="interest">
-					<%=interest%>
-				</td>
-				<% } 
-				if ( i % 10 == 0) {
-				%>
-				</tr><tr>
-				<% } %>
-			</tr>
-			
-		</table>
 		
-		
-		
-		
+		<p>Vous consultez le profil de <%=user.getFirstName()%> <%=user.getName()%></p>
+		<p>Adresse e-mail : <%=user.getMail()%></p>
+		<p>Né le : <%=profile.getBirthDate()%></p>
+		<p>Habite : <%=profile.getAddress()%>, <%=profile.getCodePostal()%> <%=profile.getCity()%></p>
 		
 		<table>
 		  <tr>

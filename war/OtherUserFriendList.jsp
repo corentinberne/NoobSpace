@@ -13,10 +13,16 @@
 <html>
     <head>
         <meta charset="utf-8"/>
+        <link href="css/Mainpage.css" type="text/css" rel="stylesheet">
     </head>
     
     <body>
-    	<h1>NoobSpace</h1>
+    	<div>
+    	 <h1 style="float:left;">NoobSpace</h1>
+    	 <a href="Mainpage.jsp" style="float:left;"> <input type="button" value="Accueil"> </a>
+    	 <a href="Deconnexion" style="float:left;"> <input type="button" value="Se déconnecter"> </a>
+    	</div>
+    	<div style="clear:both;"></div>
 		
 		<%
 		Dao dao = Dao.INSTANCE;

@@ -27,12 +27,18 @@ if(currentUser != null){
 <html>
   <head>
     <title>Editer votre profil</title>
-    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+        <link href="css/Mainpage.css" type="text/css" rel="stylesheet">
       <meta charset="utf-8"> 
   </head>
   <body>
+  <div>
+    	 <h1 style="float:left;">NoobSpace</h1>
+    	 <a href="Mainpage.jsp" style="float:left;"> <input type="button" value="Accueil"> </a>
+    	 <a href="Deconnexion" style="float:left;"> <input type="button" value="Se déconnecter"> </a>
+    	</div>
+    	<div style="clear:both;"></div>
   
-  <form action="EditProfil" method="POST">
+  <form action="EditProfil" method="POST" style="float:left;">
   	<label for="Nom">Nom</label><br/>
   	<input type="text" name="Nom" value="<%=name%>" ><br/>
   	
@@ -53,6 +59,29 @@ if(currentUser != null){
   	
   	<input type="submit" value="Envoyer"></input><br/>
   </form>
+  <%
+		Profile profil = dao.getProfil((String) request.getSession().getAttribute("mail"));
+		List<String> interests = profil.getInterests();   
+	%>
+  <table class="interests" style="float:left;">
+		  <tr>
+		     <th>Intérêt </th>
+		  </tr>
+		
+		<% for (String interest : interests) {%>
+		<tr> 
+		<td>
+		<%=interest%>
+		</td>
+		<td>
+		<a class="done" href="/removeInterest?interest=<%=interest%>" >[X]</a>
+		</td>
+		</tr> 
+		<%}
+		%>
+		</table>
+  
+  <div style="clear:both;"></div>
   
   <p>Montre à tes amis quels sont tes intérêts!</p>    	
     	<form action="/addInterest" method="post" accept-charset="utf-8">
@@ -68,28 +97,7 @@ if(currentUser != null){
 		</form>
 		
 		
-	<%
-		Profile profil = dao.getProfil((String) request.getSession().getAttribute("mail"));
-		List<String> interests = profil.getInterests();   
-	%>
-		
-	<table>
-		  <tr>
-		     <th>Intérêt </th>
-		  </tr>
-		
-		<% for (String interest : interests) {%>
-		<tr> 
-		<td>
-		<%=interest%>
-		</td>
-		<td>
-		<a class="done" href="/removeInterest?interest=<%=interest%>" >Supprimer</a>
-		</td>
-		</tr> 
-		<%}
-		%>
-		</table>
+	
   
       	<div id="myPosts">
     	<%
@@ -103,7 +111,7 @@ if(currentUser != null){
 	    	while(it.hasNext()){
 	    		Comment courant = it.next();
 	    	%>
-	    		<div class="myPost">
+	    		<div class="friendPost">
 	    			<p class="postDate"><%=courant.getMailPublisher()%></p>
 	    			<p class="postDate"><%=courant.getPublicationDate().toString()%></p>
 	    			<p class="postMessage"><%=courant.getMessage()%></p>
