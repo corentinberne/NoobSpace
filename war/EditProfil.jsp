@@ -95,9 +95,6 @@ if(currentUser != null){
 		    </tr>
 		  </table>
 		</form>
-		
-		
-	
   
       	<div id="myPosts">
     	<%

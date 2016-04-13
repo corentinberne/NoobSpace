@@ -24,8 +24,8 @@ public class ServletCreatePost extends HttpServlet {
     
     String mail = (String)session.getAttribute("mail");
     String msg = checkNull(req.getParameter("Text"));
-    
-    Dao.INSTANCE.createPost(mail, msg);
+    if(!msg.equals(""))
+    	Dao.INSTANCE.createPost(mail, msg);
     resp.sendRedirect("/Mainpage.jsp");
   }
 

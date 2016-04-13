@@ -53,6 +53,13 @@
 		    </tr>
 		  </table>
 		</form>
+		
+		<p>Tu veux publier quelque chose? C'est juste là!</p>   
+		<form action="CreatePost" method="POST">
+  			<label for="Text">Contenu de ta publication</label><br/>
+  			<input type="text" name="Text"><br/>
+  			<input type="submit" value="Envoyer"></input><br/>
+  		</form>
     	
     	<p>Tes derniers posts de Noob</p>
     	<div id="myPosts">

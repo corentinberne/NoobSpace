@@ -40,7 +40,7 @@
 		%>
         
         <div style="clear: both;"/>  
-		You have a total number of <%= friends.size() %>  friends.
+		Vous avez <%= friends.size() %> amis.
 		
 		<table id="listeAmis">
 		  <tr>

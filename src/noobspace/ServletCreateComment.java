@@ -25,8 +25,8 @@ public class ServletCreateComment extends HttpServlet {
     String mailPublisher = (String)session.getAttribute("mail");
     String mailDestinataire = checkNull((String) req.getParameter("mail"));;
     String msg = checkNull(req.getParameter("Text"));
-    
-    Dao.INSTANCE.createComment(mailPublisher, msg, mailDestinataire);
+    if(!msg.equals(""))
+    	Dao.INSTANCE.createComment(mailPublisher, msg, mailDestinataire);
     resp.sendRedirect("/OtherUserProfile.jsp?mail="+mailDestinataire);
   }
 
