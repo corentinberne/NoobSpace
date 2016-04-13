@@ -47,8 +47,9 @@
 		%>
 		</table>
 		
+		
 		  <form action="CreateComment?mail=<%=request.getParameter("mail")%>" method="POST">
-		  	<label for="Text">Text</label><br/>
+		  	<label for="Text">Ajouter un commentaire</label><br/>
 		  	<input type="text" name="Text"><br/>
 		  	<input type="submit" value="Envoyer"></input><br/>
   		</form>
