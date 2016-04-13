@@ -8,7 +8,7 @@
 <%@ page import="java.util.ArrayList" %>
 
 
-<!DOCTYPE html>
+<!DOCTYPE html> 
 
 <html>
     <head>

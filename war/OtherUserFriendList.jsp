@@ -61,7 +61,7 @@
 		<a class="done" href="/OtherUserProfile.jsp?mail=<%=user.getMail()%>" >Voir profil</a>
 		</td>
 		</tr> 
-		<%}
+		<%} 
 		%>
 		</table>
 
