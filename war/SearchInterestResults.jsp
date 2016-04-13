@@ -64,6 +64,9 @@
 		<td>
 		<a class="done" href="/OtherUserFriendList.jsp?mail=<%=user.getMail()%>" >Voir amis</a>
 		</td>
+		<td>
+		<a class="done" href="/OtherUserProfile.jsp?mail=<%=user.getMail()%>" >Voir profil</a>
+		</td>
 		</tr> 
 		<%}
 		%>

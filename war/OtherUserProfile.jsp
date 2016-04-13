@@ -17,12 +17,10 @@
     
     <body>
     	<h1>NoobSpace</h1>
-
-		<p>Votre liste d'amis</p>
 		
 		<%
 		Dao dao = Dao.INSTANCE;
-		NoobspaceUser noobSpaceUser = dao.getUser((String) request.getSession().getAttribute("mail"));
+		NoobspaceUser noobSpaceUser = dao.getUser(request.getParameter("mail"));
 		List<String> friendsMails = noobSpaceUser.getFriends();
 		
 		ArrayList<NoobspaceUser> friends = new ArrayList<NoobspaceUser>();
@@ -32,9 +30,8 @@
 		}
 		    
 		%>
-        
-        <div style="clear: both;"/>  
-		You have a total number of <%= friends.size() %>  friends.
+		
+        <p>Liste d'amis de l'utilisateur <%= noobSpaceUser.getFirstName()%> <%= noobSpaceUser.getName()%> </p>
 		
 		<table>
 		  <tr>
@@ -55,13 +52,13 @@
 		<%=user.getMail()%>
 		</td>
 		<td>
+		<a class="done" href="/addFriend?mail=<%=user.getMail()%>" >Ajouter</a>
+		</td>
+		<td>
 		<a class="done" href="/OtherUserFriendList.jsp?mail=<%=user.getMail()%>" >Voir amis</a>
 		</td>
 		<td>
 		<a class="done" href="/OtherUserProfile.jsp?mail=<%=user.getMail()%>" >Voir profil</a>
-		</td>
-		<td>
-		<a class="done" href="/removeFriend?mail=<%=user.getMail()%>" >Supprimer</a>
 		</td>
 		</tr> 
 		<%}
