@@ -20,45 +20,26 @@
 		
 		<%
 		Dao dao = Dao.INSTANCE;
-		NoobspaceUser noobSpaceUser = dao.getUser(request.getParameter("mail"));
-		List<String> friendsMails = noobSpaceUser.getFriends();
-		
-		ArrayList<NoobspaceUser> friends = new ArrayList<NoobspaceUser>();
-		for(int i = 0; i < friendsMails.size(); i++){
-			NoobspaceUser u = dao.getUser(friendsMails.get(i));
-			friends.add(u);
-		}
+		Profile profil = dao.getProfile(request.getParameter("mail"));
+		NoobspaceUser user = dao.getUser(request.getParameter("mail"));
+		List<String> interests = profil.getInterests();
 		    
 		%>
 		
-        <p>Liste d'amis de l'utilisateur <%= noobSpaceUser.getFirstName()%> <%= noobSpaceUser.getName()%> </p>
+		<p>Vous consultez le profil de <%=user.getFirstName()%> <%=user.getName()%></p>
+		<p>Adresse e-mail : <%=user.getMail()%></p>
+		<p>Né le : <%=profile.getBirthDate()%></p>
+		<p>Habite : <%=profile.getAddress()%>, <%=profile.getCodePostal()%> <%=profile.getCity()%></p>
 		
 		<table>
 		  <tr>
-		     <th>Name </th>
-		     <th>First name</th>
-		     <th>mail</th>
+		     <th>Intérêt </th>
 		  </tr>
 		
-		<% for (NoobspaceUser user : friends) {%>
+		<% for (String interest : interests) {%>
 		<tr> 
 		<td>
-		<%=user.getFirstName()%>
-		</td>
-		<td>
-		<%=user.getName()%>
-		</td>
-		<td>
-		<%=user.getMail()%>
-		</td>
-		<td>
-		<a class="done" href="/addFriend?mail=<%=user.getMail()%>" >Ajouter</a>
-		</td>
-		<td>
-		<a class="done" href="/OtherUserFriendList.jsp?mail=<%=user.getMail()%>" >Voir amis</a>
-		</td>
-		<td>
-		<a class="done" href="/OtherUserProfile.jsp?mail=<%=user.getMail()%>" >Voir profil</a>
+		<%=interest%>
 		</td>
 		</tr> 
 		<%}
