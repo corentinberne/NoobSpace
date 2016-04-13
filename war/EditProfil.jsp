@@ -75,7 +75,7 @@ if(currentUser != null){
 		
 	<table>
 		  <tr>
-		     <th>Intérêt </th>
+		     <th>Intérêts</th>
 		  </tr>
 		
 		<% for (String interest : interests) {%>
