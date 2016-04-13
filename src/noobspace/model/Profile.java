@@ -34,7 +34,7 @@ public class Profile {
      * List des posts de nos amis à notre propos (sur notre mur)
      */
     @OneToMany(mappedBy = "user", targetEntity = Post.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Post> postsFromFriends;
+    private List<Comment> commentsFromFriends;
 
     public Profile(String mail, String birthDate, String address, String codePostal, String city) {
 	this(mail);
@@ -49,7 +49,7 @@ public class Profile {
 	super();
 	this.mail = mail;
 	this.myPosts = new ArrayList<Post>();
-	this.postsFromFriends = new ArrayList<Post>();
+	this.commentsFromFriends = new ArrayList<Comment>();
     }
 
 
@@ -145,16 +145,22 @@ public class Profile {
 	this.myPosts.remove(p);
     }
 
-    public List<Post> getPostsFromFriends() {
-	return postsFromFriends;
+    public List<Comment> getPostsFromFriends() {
+	return commentsFromFriends;
     }
 
-    public void setPostsFromFriends(List<Post> postsFromFriends) {
-	this.postsFromFriends = postsFromFriends;
+    public void setPostsFromFriends(List<Comment> postsFromFriends) {
+	this.commentsFromFriends = postsFromFriends;
     }
 
-    public void addPostsFromFriends(Post p) {
-	this.postsFromFriends.add(p);
+    public void addPostsFromFriends(Comment p) {
+	if (this.commentsFromFriends == null)
+	    this.commentsFromFriends = new ArrayList<Comment>();
+	this.commentsFromFriends.add(p);
+    }
+    
+    public void removeComment(Comment p) {
+	this.commentsFromFriends.remove(p);
     }
 
 }
