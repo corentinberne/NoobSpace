@@ -33,7 +33,7 @@ public class Profile {
     /*
      * List des posts de nos amis à notre propos (sur notre mur)
      */
-    @OneToMany(mappedBy = "user", targetEntity = Post.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user", targetEntity = Comment.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Comment> commentsFromFriends;
 
     public Profile(String mail, String birthDate, String address, String codePostal, String city) {
@@ -153,7 +153,7 @@ public class Profile {
 	this.commentsFromFriends = postsFromFriends;
     }
 
-    public void addPostsFromFriends(Comment p) {
+    public void addCommentFromFriends(Comment p) {
 	if (this.commentsFromFriends == null)
 	    this.commentsFromFriends = new ArrayList<Comment>();
 	this.commentsFromFriends.add(p);

@@ -3,6 +3,9 @@
 <%@ page import="noobspace.model.NoobspaceUser" %>
 <%@ page import="noobspace.model.Profile" %>
 <%@ page import="noobspace.dao.Dao" %>
+<%@ page import="java.util.List"%>
+<%@ page import="java.util.Iterator"%>
+<%@ page import="noobspace.model.Comment" %>
 
 <%
 Dao dao = Dao.INSTANCE;
@@ -87,6 +90,28 @@ if(currentUser != null){
 		<%}
 		%>
 		</table>
+  
+      	<div id="myPosts">
+    	<%
+    	
+    	Dao d = Dao.INSTANCE;
+    	Profile profil2 = d.getProfil((String)request.getSession().getAttribute("mail"));
+    	List comments = d.searchComment(profil2);
+    	System.out.println(comments);
+    	if(comments != null){
+	    	Iterator<Comment> it = comments.iterator();
+	    	while(it.hasNext()){
+	    		Comment courant = it.next();
+	    	%>
+	    		<div class="myPost">
+	    			<p class="postDate"><%=courant.getMailPublisher()%></p>
+	    			<p class="postDate"><%=courant.getPublicationDate().toString()%></p>
+	    			<p class="postMessage"><%=courant.getMessage()%></p>
+	    		</div>
+	    	<%
+    	}}
+    	%>
+    	</div>
   
 </body>
 </html>

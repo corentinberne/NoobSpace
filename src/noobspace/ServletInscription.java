@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import noobspace.dao.Dao;
-import noobspace.shared.FieldVerifier;
 
 @SuppressWarnings("serial")
 public class ServletInscription extends HttpServlet

@@ -50,10 +50,16 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>RemovePost</servlet-name>
 		<servlet-class>noobspace.ServletRemovePost</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>CreateComment</servlet-name>
+		<servlet-class>noobspace.ServletCreateComment</servlet-class>
+	</servlet>
 
 
-
-
+	<servlet-mapping>
+		<servlet-name>CreateComment</servlet-name>
+		<url-pattern>/CreateComment</url-pattern>
+	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>RemoveFriend</servlet-name>
 		<url-pattern>/removeFriend</url-pattern>

@@ -23,11 +23,11 @@ public class ServletCreateComment extends HttpServlet {
     
     
     String mailPublisher = (String)session.getAttribute("mail");
-    String mailDestinataire = checkNull((String) req.getAttribute("mail"));;
+    String mailDestinataire = checkNull((String) req.getParameter("mail"));;
     String msg = checkNull(req.getParameter("Text"));
     
-    Dao.INSTANCE.createComment(mailDestinataire, msg, mailPublisher);
-    resp.sendRedirect("/OtherUserFriendList.jsp?mail="+mailDestinataire);
+    Dao.INSTANCE.createComment(mailPublisher, msg, mailDestinataire);
+    resp.sendRedirect("/OtherUserProfile.jsp?mail="+mailDestinataire);
   }
 
   private String checkNull(String s) {

@@ -10,7 +10,7 @@ import javax.persistence.Query;
 import com.google.appengine.api.datastore.Key;
 
 import noobspace.model.Comment;
-import noobspace.model.NoobspaceUser;
+import noobspace.model.NoobspaceUser; 
 import noobspace.model.Post;
 import noobspace.model.Profile;
 
@@ -209,7 +209,7 @@ public enum Dao {
 	Date d = new Date();
 	System.out.println(d.toString());
 	Comment p = new Comment(msg, d.toString(), mail);
-	userProfile.addPostsFromFriends(p);
+	userProfile.addCommentFromFriends(p);
 	em.persist(userProfile);
 	em.close();
     }
